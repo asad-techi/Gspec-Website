@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# GSpec Company Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A futuristic, animated landing page for an AI solutions company — built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** + **TypeScript**
+- **Vite** — dev server and bundler
+- **Tailwind CSS** — utility-first styling
+- **Framer Motion** — page and scroll animations
+- **Three.js / React Three Fiber** — 3D robot model in the hero
+- **Contentful** — headless CMS for blog posts
+- **React Router DOM** — client-side routing
+- **shadcn/ui** (Radix UI) — accessible UI components
 
-## React Compiler
+## Pages & Sections
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Single-page sections (home)
+| Section | Description |
+|---|---|
+| Hero | Animated intro with 3D robot and scroll parallax |
+| Services | AI service offerings with modal detail cards |
+| Testimonials | Client feedback carousel |
+| About | Company background |
+| Mission | Core mission statement |
+| Journey | Company timeline |
+| Contact | Contact form |
 
-## Expanding the ESLint configuration
+### Routes
+- `/` — Main landing page
+- `/blogs` — Blog listing (fetched from Contentful)
+- `/blog/:slug` — Individual blog post
+- `/mission` — Dedicated mission page
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- Node.js 18+
+- A [Contentful](https://www.contentful.com/) account with a space set up for blog posts
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create a `.env` file in the project root (see `.env.example` for reference):
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_CONTENTFUL_SPACE_ID=your_space_id
+VITE_CONTENTFUL_ACCESS_TOKEN=your_access_token
 ```
+
+> Never commit your `.env` file. It is already excluded via `.gitignore`.
+
+### Development
+
+```bash
+npm run dev
+```
+
+
+## Project Structure
+
+```
+src/
+├── components/       # Shared components (Header, Footer, NeuralLoader, Robot...)
+├── sections/         # Home page sections (Hero, Services, About...)
+├── pages/            # Route-level pages (BlogsPage, BlogPostPage, MissionPage)
+├── lib/              # Utilities and Contentful client
+├── hooks/            # Custom React hooks
+├── App.tsx           # Root app with layout and loader
+├── main.tsx          # Entry point
+└── index.css         # Global styles
+```
+
+## Environment Variables Reference
+
+| Variable | Description |
+|---|---|
+| `VITE_CONTENTFUL_SPACE_ID` | Your Contentful space ID |
+| `VITE_CONTENTFUL_ACCESS_TOKEN` | Contentful Content Delivery API token |
