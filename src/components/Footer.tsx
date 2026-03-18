@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUpRight, InstagramIcon } from 'lucide-react';
 
 const footerLinks = {
@@ -24,9 +24,23 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   const scrollToSection = (href: string) => {
     if (href === '#') return;
     const id = href.slice(1);
+
+    if (!isHome) {
+      navigate('/');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+      return;
+    }
+
     // Release journey scroll-lock if active, then wait one frame for layout
     // to restore before measuring element positions.
     const release = (window as unknown as Record<string, unknown>).__journeyRelease;

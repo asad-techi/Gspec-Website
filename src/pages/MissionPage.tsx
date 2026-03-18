@@ -475,10 +475,7 @@ export default function MissionPage() {
               & The Meridian Council   Joint Statement, March 2026
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full" style={{ background: '#F729A8', boxShadow: '0 0 8px #F729A8' }} />
-            <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.28)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Official</span>
-          </div>
+          
         </motion.div>
 
         {/* ── Back CTA ── */}

@@ -15,6 +15,8 @@ export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
+  const [isMobile, setIsMobile] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
@@ -23,6 +25,13 @@ export default function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, -100]);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -103,7 +112,7 @@ export default function HeroSection() {
 
       <motion.div 
         className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
-        style={{ opacity, scale, y }}
+        style={isMobile ? {} : { opacity, scale, y }}
       >
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left content */}
@@ -229,16 +238,16 @@ export default function HeroSection() {
               
               {/* Floating elements around robot */}
               <motion.div
-                className="absolute -top-4 -right-4 w-16 h-16 rounded-2xl bg-gradient-to-br from-[rgba(59,240,255,0.2)] to-[rgba(75,146,255,0.1)] border border-[rgba(59,240,255,0.3)] flex items-center justify-center"
-                animate={{ y: [-10, 10, -10], rotate: [0, 5, 0] }}
+                className="absolute top-1/4 -right-8 w-14 h-14 rounded-2xl bg-gradient-to-br from-[rgba(59,240,255,0.2)] to-[rgba(75,146,255,0.1)] border border-[rgba(59,240,255,0.3)] flex items-center justify-center"
+                animate={{ y: [-8, 8, -8], rotate: [0, 5, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
                 <Zap className="w-6 h-6 text-[#3BF0FF]" />
               </motion.div>
-              
+
               <motion.div
-                className="absolute -bottom-4 -left-4 w-14 h-14 rounded-xl bg-gradient-to-br from-[rgba(184,41,247,0.2)] to-[rgba(75,146,255,0.1)] border border-[rgba(184,41,247,0.3)] flex items-center justify-center"
-                animate={{ y: [10, -10, 10], rotate: [0, -5, 0] }}
+                className="absolute top-1/2 -left-8 w-12 h-12 rounded-xl bg-gradient-to-br from-[rgba(184,41,247,0.2)] to-[rgba(75,146,255,0.1)] border border-[rgba(184,41,247,0.3)] flex items-center justify-center"
+                animate={{ y: [8, -8, 8], rotate: [0, -5, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
               >
                 <Sparkles className="w-5 h-5 text-[#B829F7]" />

@@ -33,7 +33,7 @@ export default function AboutSection() {
     <section 
       ref={sectionRef}
       id="about" 
-      className="relative py-32 overflow-hidden"
+      className="relative py-16 lg:py-24 overflow-hidden"
     >
       {/* Background */}
       <motion.div 
@@ -46,7 +46,7 @@ export default function AboutSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-10">
           <SectionBadge label="About Gspec" color="#B829F7" />
 
           <motion.h2
@@ -75,7 +75,7 @@ export default function AboutSection() {
         </div>
 
         {/* Main content grid */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start mb-24">
+        <div className="grid lg:grid-cols-2 gap-10 items-start mb-10">
           {/* Left - Story */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -152,7 +152,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-24"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4"
         >
           {stats.map((stat, index) => (
             <motion.div

@@ -2,9 +2,14 @@
 
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import Robot from '@/components/Robot';
 import { Mail, Phone, MapPin, Send, MessageSquare, ArrowRight, Check } from 'lucide-react';
 import SectionBadge from '@/components/SectionBadge';
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const contactInfo = [
   { icon: Phone, label: 'Phone', value: '+1 717 402 8885', href: 'tel:+17174028885' },
@@ -25,24 +30,54 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('[ContactSection] Submitting contact form with state:', formState);
+    console.log('[ContactSection] EmailJS config:', {
+      serviceId: EMAILJS_SERVICE_ID,
+      templateId: EMAILJS_TEMPLATE_ID,
+      hasPublicKey: !!EMAILJS_PUBLIC_KEY,
+    });
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormState({ name: '', email: '', company: '', message: '' });
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+
+    try {
+      const templateParams = {
+        // Primary fields used in your EmailJS template
+        user_name: formState.name,
+        user_email: formState.email,
+        company: formState.company,
+        message: formState.message,
+        // Extra aliases in case the template uses different variable names
+        name: formState.name,
+        email: formState.email,
+        reply_to: formState.email,
+      };
+
+      console.log('[ContactSection] EmailJS template params being sent:', templateParams);
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      console.log('[ContactSection] EmailJS send() completed successfully');
+
+      setIsSubmitted(true);
+      setFormState({ name: '', email: '', company: '', message: '' });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error('Failed to send message:', error);
+      alert('Failed to send message. Please try again or contact us directly at info@gspectech.com');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section 
       ref={sectionRef}
       id="contact" 
-      className="relative py-32 overflow-hidden"
+      className="relative pt-20 pb-0 lg:py-32 overflow-hidden"
     >
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
@@ -202,7 +237,7 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="flex justify-center"
+              className="hidden lg:flex justify-center"
             >
               <div className="relative">
                 <motion.div
