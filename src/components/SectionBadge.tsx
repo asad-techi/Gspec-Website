@@ -7,7 +7,7 @@ interface SectionBadgeProps {
   label: string;
   color?: string;
   align?: 'left' | 'center';
-  icon?: React.ElementType;
+  icon?: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
 }
 
 export default function SectionBadge({
