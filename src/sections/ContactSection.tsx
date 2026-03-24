@@ -4,18 +4,13 @@ import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import Robot from '@/components/Robot';
-import { Mail, Phone, MapPin, Send, MessageSquare, ArrowRight, Check } from 'lucide-react';
+import { Send, MessageSquare, Check } from 'lucide-react';
 import SectionBadge from '@/components/SectionBadge';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-const contactInfo = [
-  { icon: Phone, label: 'Phone', value: '+1 717 402 8885', href: 'tel:+17174028885' },
-  { icon: Mail, label: 'Email', value: 'info@gspectech.com', href: 'mailto:info@gspectech.com' },
-  { icon: MapPin, label: 'Address', value: '115 W 27th St, New York, NY 10001', href: '#' },
-];
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);

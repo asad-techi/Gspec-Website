@@ -132,7 +132,7 @@ function useLowPower(): boolean {
   useEffect(() => {
     // Battery Status API — not universally available
     const nav = navigator as Navigator & {
-      getBattery?: () => Promise<{ level: number; charging: boolean }>;
+      getBattery?: () => Promise<{ level: number; charging: boolean; addEventListener: (type: string, listener: () => void) => void }>;
     };
     if (!nav.getBattery) return;
     nav.getBattery().then(b => {

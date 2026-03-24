@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUpRight, InstagramIcon } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, ArrowUpRight, InstagramIcon } from 'lucide-react';
 
 const footerLinks = {
   services: [
