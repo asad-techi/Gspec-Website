@@ -126,7 +126,7 @@ export default function HeroSection() {
               transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="font-['Orbitron',sans-serif] text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6"
             >
-              <span className="block">GSPEC Technologies</span>
+              
               <span className="block bg-gradient-to-r from-[#3BF0FF] via-[#4B92FF] to-[#B829F7] bg-clip-text text-transparent">
                 AI-Driven Innovation
               </span>
