@@ -23,16 +23,18 @@ import SectionBadge from '@/components/SectionBadge';
 //                              TYPES & DATA
 // =========================================================================
 
+type IconComponent = React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+
 interface ServiceDetail {
   id: string;
-  icon: React.ElementType;
+  icon: IconComponent;
   title: string;
   tagline: string;
   color: string;
   modal: {
     headline: string;
     intro: string;
-    capabilities: { icon: React.ElementType; title: string; description: string }[];
+    capabilities: { icon: IconComponent; title: string; description: string }[];
     outcomes: string[];
   };
 }
