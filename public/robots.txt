@@ -1,0 +1,14 @@
+# robots.txt — GSPEC Technologies
+# https://www.gspectech.com
+
+User-agent: *
+Allow: /
+
+# Block private/admin paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.env
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.gspectech.com/sitemap.xml

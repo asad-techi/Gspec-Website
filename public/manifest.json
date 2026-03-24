@@ -1,0 +1,25 @@
+{
+  "name": "GSPEC Technologies",
+  "short_name": "GSPEC Tech",
+  "description": "GSPEC Technologies — AI-Powered solutions including NLP, Predictive Analysis, Computer Vision, and enterprise AI integration. Your Vision, Our Innovation, One Future.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#3BF0FF",
+  "background_color": "#070A12",
+  "lang": "en",
+  "categories": ["technology", "business", "productivity"],
+  "icons": [
+    {
+      "src": "/gspec-logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -83,8 +83,9 @@ export default function Footer() {
             </div>
             
             <p className="text-[rgba(255,255,255,0.6)] text-sm leading-relaxed mb-6 max-w-sm">
-              Transforming businesses with cutting-edge AI solutions. 
-              We combine deep expertise with innovation to drive measurable impact.
+              GSPEC Technologies transforms businesses with cutting-edge AI solutions including NLP,
+              predictive analytics, computer vision, and enterprise automation.
+              GSPEC Tech — Your Vision, Our Innovation.
             </p>
 
             {/* Contact info */}

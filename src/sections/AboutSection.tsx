@@ -47,7 +47,7 @@ export default function AboutSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-10">
-          <SectionBadge label="About Gspec" color="#B829F7" />
+          <SectionBadge label="About GSPEC Technologies" color="#B829F7" />
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -96,13 +96,13 @@ export default function AboutSection() {
                 with complex systems that are difficult to adapt.
               </p>
               <p>
-                Founded in 2020 by a team working in technology since 2017, Gspec Technologies was 
-                built to change that. Our mission is simple: Make software development transparent, 
+                Founded in 2020 by a team working in technology since 2017, GSPEC Technologies was
+                built to change that. Our mission is simple: Make software development transparent,
                 collaborative and focused on long-term success.
               </p>
               <p>
-                At Gspec Technologies, we create smart and adaptable software solutions that solve 
-                real problems and deliver measurable results.
+                At GSPEC Tech, we create smart and adaptable AI-powered software solutions that solve
+                real problems and deliver measurable results for enterprises worldwide.
               </p>
             </div>
 
