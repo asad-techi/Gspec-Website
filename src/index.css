@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.icon-hover-wrapper {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.icon-hover-wrapper:hover {
+  transform: scale(1.2) rotate(6deg);
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
 :root {
+  --radius: 0.5rem;
   --bg: #070A12;
   --bg-secondary: #0a0e1a;
   --panel: rgba(255, 255, 255, 0.06);

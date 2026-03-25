@@ -175,7 +175,7 @@ export default function Header() {
               transition={{ delay: 1, duration: 0.5 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="hidden lg:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-[rgba(59,240,255,0.15)] to-[rgba(75,146,255,0.15)] border border-[rgba(59,240,255,0.3)] text-white text-sm font-medium hover:border-[rgba(59,240,255,0.5)] transition-all group"
+              className="hidden lg:flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-gradient-to-r from-[rgba(59,240,255,0.15)] to-[rgba(75,146,255,0.15)] border border-[rgba(59,240,255,0.3)] text-white text-sm font-medium hover:border-[rgba(59,240,255,0.5)] transition-all group"
             >
               <span className="font-['Orbitron',sans-serif] tracking-wider text-xs uppercase">
                 Get Started
@@ -192,7 +192,7 @@ export default function Header() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white"
+              className="lg:hidden p-2 rounded-2xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </motion.button>
@@ -229,7 +229,7 @@ export default function Header() {
                           to={item.href}
                           onClick={() => setIsMobileMenuOpen(false)}
                           className={cn(
-                            'block px-4 py-3 rounded-xl text-sm font-medium transition-all',
+                            'block px-4 py-3 rounded-2xl text-sm font-medium transition-all',
                             isActive
                               ? 'bg-[rgba(59,240,255,0.15)] text-[#3BF0FF] border border-[rgba(59,240,255,0.3)]'
                               : 'text-[rgba(255,255,255,0.7)] hover:bg-[rgba(255,255,255,0.05)] hover:text-white'
@@ -250,7 +250,7 @@ export default function Header() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
                       className={cn(
-                        'px-4 py-3 rounded-xl text-sm font-medium transition-all',
+                        'px-4 py-3 rounded-2xl text-sm font-medium transition-all',
                         isActive
                           ? 'bg-[rgba(59,240,255,0.15)] text-[#3BF0FF] border border-[rgba(59,240,255,0.3)]'
                           : 'text-[rgba(255,255,255,0.7)] hover:bg-[rgba(255,255,255,0.05)] hover:text-white'
@@ -268,7 +268,7 @@ export default function Header() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="mt-4 flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl bg-gradient-to-r from-[#3BF0FF] to-[#4B92FF] text-white text-sm font-medium"
+                className="mt-4 flex items-center justify-center gap-2 w-full px-6 py-3 rounded-2xl bg-gradient-to-r from-[#3BF0FF] to-[#4B92FF] text-white text-sm font-medium"
               >
                 <span className="font-['Orbitron',sans-serif] tracking-wider uppercase">
                   Get Started

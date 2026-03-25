@@ -3,27 +3,35 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import {
-  Brain,
-  FileText,
-  Eye,
-  BarChart3,
   ArrowRight,
   Sparkles,
   X,
   Check,
-  MessageSquare,
-  Database,
-  Cpu,
-  TrendingUp,
-  Shield,
 } from 'lucide-react';
+import {
+  ChatText,
+  FileText,
+  TrendUp,
+  Database,
+  ChartLineUp,
+  ShieldCheck,
+  ChartBar,
+  Brain,
+  Eye,
+  Cpu,
+  Robot,
+  Lightning,
+  Camera,
+  Monitor,
+} from '@phosphor-icons/react';
 import SectionBadge from '@/components/SectionBadge';
 
 // =========================================================================
 //                              TYPES & DATA
 // =========================================================================
 
-type IconComponent = React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type IconComponent = React.ComponentType<any>;
 
 interface ServiceDetail {
   id: string;
@@ -42,7 +50,7 @@ interface ServiceDetail {
 const services: ServiceDetail[] = [
   {
     id: 'nlp',
-    icon: FileText,
+    icon: ChatText,
     title: 'NLP',
     tagline: 'Turn language into actionable intelligence at scale.',
     color: '#3BF0FF',
@@ -51,9 +59,9 @@ const services: ServiceDetail[] = [
       intro:
         'GSPEC Technologies delivers NLP solutions that help enterprises extract meaning, automate workflows and unlock the value hidden in text — at any scale.',
       capabilities: [
-        { icon: MessageSquare, title: 'Chatbots & Conversational AI', description: 'Deploy intelligent virtual assistants that understand intent, context and nuance to deliver seamless customer interactions.' },
+        { icon: ChatText, title: 'Chatbots & Conversational AI', description: 'Deploy intelligent virtual assistants that understand intent, context and nuance to deliver seamless customer interactions.' },
         { icon: FileText, title: 'Document Understanding', description: 'Automatically extract, classify and summarize information from contracts, reports, emails and invoices.' },
-        { icon: TrendingUp, title: 'Sentiment Analysis', description: 'Measure customer emotion and brand perception across reviews, social feeds and support tickets in real time.' },
+        { icon: TrendUp, title: 'Sentiment Analysis', description: 'Measure customer emotion and brand perception across reviews, social feeds and support tickets in real time.' },
         { icon: Database, title: 'Language Workflow Automation', description: 'Eliminate manual text tasks by automating routing, tagging, translation and data entry with NLP pipelines.' },
       ],
       outcomes: [
@@ -66,7 +74,7 @@ const services: ServiceDetail[] = [
   },
   {
     id: 'predictive',
-    icon: BarChart3,
+    icon: ChartLineUp,
     title: 'Predictive Analysis',
     tagline: 'Forecast the future and act before problems arise.',
     color: '#4B92FF',
@@ -75,9 +83,9 @@ const services: ServiceDetail[] = [
       intro:
         "Our predictive analytics engine transforms your historical data into forward-looking intelligence — helping decision-makers stay ahead of market shifts, operational risks and customer behavior.",
       capabilities: [
-        { icon: TrendingUp, title: 'Demand Forecasting', description: 'Accurately predict demand cycles to optimize inventory, staffing and supply chain operations.' },
-        { icon: Shield, title: 'Risk & Fraud Detection', description: 'Identify anomalies and high-risk events before they escalate using real-time pattern recognition models.' },
-        { icon: BarChart3, title: 'Business Intelligence', description: 'Surface actionable KPIs and trend signals from complex datasets with explainable AI dashboards.' },
+        { icon: TrendUp, title: 'Demand Forecasting', description: 'Accurately predict demand cycles to optimize inventory, staffing and supply chain operations.' },
+        { icon: ShieldCheck, title: 'Risk & Fraud Detection', description: 'Identify anomalies and high-risk events before they escalate using real-time pattern recognition models.' },
+        { icon: ChartBar, title: 'Business Intelligence', description: 'Surface actionable KPIs and trend signals from complex datasets with explainable AI dashboards.' },
         { icon: Brain, title: 'Data-Driven Decisions', description: 'Replace gut-feel decisions with model-backed recommendations tied directly to business outcomes.' },
       ],
       outcomes: [
@@ -90,7 +98,7 @@ const services: ServiceDetail[] = [
   },
   {
     id: 'ai-solutions',
-    icon: Brain,
+    icon: Robot,
     title: 'AI Solutions',
     tagline: 'Custom AI systems built for your specific business challenges.',
     color: '#B829F7',
@@ -100,9 +108,9 @@ const services: ServiceDetail[] = [
         'GSPEC Technologies builds bespoke AI systems that integrate with your existing infrastructure, automate critical workflows and deliver measurable ROI from day one.',
       capabilities: [
         { icon: Cpu, title: 'Custom AI Development', description: 'End-to-end AI model design, training and deployment tailored precisely to your use case and data.' },
-        { icon: Brain, title: 'Workflow Automation', description: 'Automate repetitive, rule-based tasks across operations, finance, HR and customer service with intelligent agents.' },
-        { icon: Shield, title: 'Enterprise AI Integration', description: 'Connect AI capabilities to your ERP, CRM, or cloud platforms via robust APIs and middleware layers.' },
-        { icon: TrendingUp, title: 'Scalable Business Solutions', description: 'Architecture designed to grow with your business — from pilot programs to full enterprise rollout.' },
+        { icon: Lightning, title: 'Workflow Automation', description: 'Automate repetitive, rule-based tasks across operations, finance, HR and customer service with intelligent agents.' },
+        { icon: ShieldCheck, title: 'Enterprise AI Integration', description: 'Connect AI capabilities to your ERP, CRM, or cloud platforms via robust APIs and middleware layers.' },
+        { icon: ChartLineUp, title: 'Scalable Business Solutions', description: 'Architecture designed to grow with your business — from pilot programs to full enterprise rollout.' },
       ],
       outcomes: [
         'Average 3–5× ROI within the first year of deployment',
@@ -123,9 +131,9 @@ const services: ServiceDetail[] = [
       intro:
         'Our computer vision solutions turn raw image and video data into structured intelligence — enabling automated inspection, real-time monitoring and visual process control at scale.',
       capabilities: [
-        { icon: Eye, title: 'Object Detection & Recognition', description: 'Identify, classify and track objects across live video or image streams with high accuracy and speed.' },
-        { icon: Shield, title: 'Visual Inspection & QA', description: 'Automate quality control processes on production lines with precision that surpasses manual inspection.' },
-        { icon: TrendingUp, title: 'Monitoring Systems', description: 'Deploy intelligent surveillance and operational monitoring with real-time anomaly detection and alerting.' },
+        { icon: Camera, title: 'Object Detection & Recognition', description: 'Identify, classify and track objects across live video or image streams with high accuracy and speed.' },
+        { icon: ShieldCheck, title: 'Visual Inspection & QA', description: 'Automate quality control processes on production lines with precision that surpasses manual inspection.' },
+        { icon: Monitor, title: 'Monitoring Systems', description: 'Deploy intelligent surveillance and operational monitoring with real-time anomaly detection and alerting.' },
         { icon: Cpu, title: 'Intelligent Visual Automation', description: 'Integrate vision models into robotics, logistics and smart facility systems for end-to-end visual automation.' },
       ],
       outcomes: [
@@ -654,13 +662,15 @@ function HolographicServiceCard({
             {/* Service tag */}
             <div className="flex items-center gap-2 mb-3">
               <div
-                className="w-7 h-7 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                className="w-7 h-7 rounded-lg flex items-center justify-center icon-hover-wrapper"
                 style={{
                   background: `linear-gradient(135deg, ${service.color}20, ${service.color}08)`,
                   border: `1px solid ${service.color}30`,
+                  color: service.color,
+                  transition: 'transform 0.3s ease, filter 0.3s ease',
                 }}
               >
-                {(() => { const Icon = service.icon; return <Icon className="w-3.5 h-3.5" style={{ color: service.color }} />; })()}
+                {(() => { const Icon = service.icon; return <Icon size={16} weight="duotone" style={{ color: service.color }} />; })()}
               </div>
               <span
                 className="font-['Rajdhani',sans-serif] text-[10px] font-semibold tracking-[0.2em] uppercase"
@@ -763,13 +773,15 @@ function ServiceModal({
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-center gap-4">
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 icon-hover-wrapper"
                 style={{
                   background: `linear-gradient(135deg, ${service.color}25, ${service.color}10)`,
                   border: `1px solid ${service.color}40`,
+                  color: service.color,
+                  transition: 'transform 0.3s ease, filter 0.3s ease',
                 }}
               >
-                {(() => { const Icon = service.icon; return <Icon className="w-7 h-7" style={{ color: service.color }} />; })()}
+                {(() => { const Icon = service.icon; return <Icon size={32} weight="duotone" style={{ color: service.color }} />; })()}
               </div>
               <div>
                 <p
@@ -809,13 +821,15 @@ function ServiceModal({
                 className="p-5 rounded-xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.07)] hover:border-[rgba(255,255,255,0.14)] transition-colors"
               >
                 <div
-                  className="w-9 h-9 rounded-lg flex items-center justify-center mb-3"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center mb-3 icon-hover-wrapper"
                   style={{
                     background: `${service.color}15`,
                     border: `1px solid ${service.color}30`,
+                    color: service.color,
+                    transition: 'transform 0.3s ease, filter 0.3s ease',
                   }}
                 >
-                  {(() => { const CapIcon = cap.icon; return <CapIcon className="w-4 h-4" style={{ color: service.color }} />; })()}
+                  {(() => { const CapIcon = cap.icon; return <CapIcon size={18} weight="duotone" style={{ color: service.color }} />; })()}
                 </div>
                 <h4 className="font-['Chakra_Petch',sans-serif] text-sm text-white mb-2">
                   {cap.title}
